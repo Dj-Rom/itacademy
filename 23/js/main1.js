@@ -89,17 +89,42 @@ var formDef2 = [{
 },
 ];
 function form(func) {
-    let f ='',result = '',r = '';
+   
+    let f ='',result = '',r = '',rres='', s = '';
     for( let key of func){
+       // (key[Object.keys(key)[1]] == 'check')? key[Object.keys(key)[1]] = 'radio': false
         if(Object.keys(key).length ==4){
-            for(let s=0;s<key[Object.keys(key)[3]].length;s++){
-                console.log(key[Object.keys(key)[3]]);
-                r = `<option value="${key[Object.keys(key)[3]][1]}">${key[Object.keys(key)[3]][0]}</option>`
+                let a = 0;
+                if(key[Object.keys(key)[1]] == 'combo'){
+                 const startCombo = ` <label for="${key[Object.keys(key)[2]]}">${key[Object.keys(key)[0]]}</label>`
+
+                   const startSelectCombo = `<select name="${key[Object.keys(key)[2]]}" >`
+                    const endSelectCombo =`</select>`
+                    for(a; a < key[Object.keys(key)[3]].length;a++){
+                
+                 s += `<option value="${key[Object.keys(key)[3]][a].value}">${key[Object.keys(key)[3]][a].text}</option>`
+                }
+                rres = `${startCombo}${startSelectCombo}${s}${endSelectCombo}`
+                        f = rres
+
+                    }
+
+
+                else if (key[Object.keys(key)[1]] == 'radio'){console.log(key[Object.keys(key)[2]]);for(a; a < key[Object.keys(key)[3]].length;a++){
+                   r +=` <input type="radio" required id ="${key[Object.keys(key)[2]]}" name="${key[Object.keys(key)[2]]}"  value="${key[Object.keys(key)[3]][a].value}"><label for="${key[Object.keys(key)[2]]}"> ${key[Object.keys(key)[3]][a].text}<br></label>`
+                  
+                   f = `<br><label>${key[Object.keys(key)[0]]}</label> ${r}`
+                } }
             };
-                f=`<label for="${key[Object.keys(key)[2]]}">${key[Object.keys(key)[0]]}<select name="${key[Object.keys(key)[2]]}">${r}</select>`;}
+                
+            
         if(Object.keys(key).length ==3){
+            if (key[Object.keys(key)[1]] == 'check'){
+                f = ` <label for="${key[Object.keys(key)[2]]}">${key[Object.keys(key)[0]]}</label> <input type="checkbox" name="${key[Object.keys(key)[2]]}">`
+            }else 
         f=` <label for="${key[Object.keys(key)[2]]}">${key[Object.keys(key)[0]]}</label> <input type="${key[Object.keys(key)[1]]}" name="${key[Object.keys(key)[2]]}" >`; }
         if(Object.keys(key).length ===2){
+            
             f=` <input type="${key[Object.keys(key)[1]]}" value="${key[Object.keys(key)[0]]}"  >`;
         break}
             result += f
