@@ -90,7 +90,7 @@ var formDef2 = [{
 ];
 function form(func) {
 
-    let f = '', result = '', r = '', rres = '', s = '';
+    let f = '', result = '<br><form action="https://fe.it-academy.by/TestForm.php" name="formJs" method="post">', r = '', rres = '', s = '';
     for (let key of func) {
         // (key[Object.keys(key)[1]] == 'check')? key[Object.keys(key)[1]] = 'radio': false
         if (Object.keys(key).length == 4) {
@@ -129,12 +129,15 @@ function form(func) {
         if (Object.keys(key).length === 2) {
 
             f = ` <input type="${key[Object.keys(key)[1]]}" value="${key[Object.keys(key)[0]]}"  >`;
-            break
+            break;
         }
-        result += f
+        result += f;
     }
-    result += f
-    const divForm = document.forms.formJs;
-    divForm.innerHTML = result
+    result += f;
+    
+    let divForm = document.createElement("div");
+    
+    divForm.innerHTML = result;
+    document.body.append(divForm);
 } form(formDef1);
- form(formDef2);
+form(formDef2);
