@@ -136,4 +136,5 @@ function form(func) {
     result += f
     const divForm = document.forms.formJs;
     divForm.innerHTML = result
-} form(formDef1)
+} form(formDef1);
+ form(formDef2);
