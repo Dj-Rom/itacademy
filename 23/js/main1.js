@@ -119,7 +119,7 @@ function form(func) {
         }
         if (key.kind === 'radio') {
             for (a = 0; a < key[Object.keys(key)[3]].length; a++) {
-                r += ` <input type="radio" required id ="${key[Object.keys(key)[2]]}" name="${key[Object.keys(key)[2]]}"  value="${key[Object.keys(key)[3]][a].value}"><label for="${key[Object.keys(key)[2]]}"> ${key[Object.keys(key)[3]][a].text}<br></label>`
+                r += ` <br><input type="radio" required id ="${key[Object.keys(key)[2]]}" name="${key[Object.keys(key)[2]]}"  value="${key[Object.keys(key)[3]][a].value}"><label for="${key[Object.keys(key)[2]]}"> ${key[Object.keys(key)[3]][a].text}<br></label>`
             }
             result += `<br><label>${key[Object.keys(key)[0]]}</label> ${r}`
         }
