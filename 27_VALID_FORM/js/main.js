@@ -64,7 +64,7 @@ function valConrole(e,p,f){
     }else {
         p.style.display='block';
          f.focus;
-         EO.preventDefault();
+         event.preventDefault();
 }
 
 
@@ -86,16 +86,9 @@ form.addEventListener('click'&&'focusout',()=>{
         
             }else if(event.target.value){elem.style.display='none';}
             }
-            
-            
-        
-        
-        
-       
-
-        // p.value.style.display='block'
-        
+        }
     }
-         })
+}                     
+    
         
   
