@@ -89,9 +89,8 @@ form.addEventListener('click' && 'focusout', () => {
             } else if (event.target.value) { elem.style.display = 'none'; }
         }
 
-
-
     }
 })
+
 
 
