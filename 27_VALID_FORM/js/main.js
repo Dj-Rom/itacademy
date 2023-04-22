@@ -42,7 +42,7 @@ function validate(EO) {
 
     const commentsSite = form.elements.comments;
     const commentsSiteValue = commentsSite.value;
-    const commentsSiteValueDetector = document.querySelector('#comments');
+    const commentsSiteValueDetector = document.querySelector('#rticle');
 
 
     valConrole(nameSiteValue,nameSiteValueDetector,nameSite);
