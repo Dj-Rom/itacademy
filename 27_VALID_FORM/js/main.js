@@ -1,13 +1,13 @@
 "use strict";
 const p = document.querySelectorAll('p'),
-form = document.querySelector('form');
-    
+    form = document.querySelector('form');
 
-     
-     
+
+
+
 function validate(EO) {
-    EO=EO||window.event;
-    
+    EO = EO || window.event;
+
 
     const form = document.querySelector('form')
 
@@ -35,60 +35,63 @@ function validate(EO) {
     const rubricSite = form.elements.rubric;
     const rubricSiteValue = rubricSite.value;
     const rubricSiteValueDetector = document.querySelector('#rubric');
-    
+
     const publicSite = form.elements.public;
     const publicSiteValue = publicSite.value;
     const publicSiteValueDetector = document.querySelector('#public');
 
     const commentsSite = form.elements.comments;
     const commentsSiteValue = commentsSite.value;
-    const commentsSiteValueDetector = document.querySelector('#rticle');
+    const commentsSiteValueDetector = document.querySelector('#article');
 
 
-    valConrole(nameSiteValue,nameSiteValueDetector,nameSite);
-    valConrole(urlSiteValue,urlSiteValueDetector,urlSite);
-    valConrole(startdateSiteValue,startdateSiteValueDetector,startdateSite);
-    valConrole(personsSiteValue,personsSiteValueDetector,personsSite);
-    valConrole(emailSiteValue,emailSiteValueDetector, emailSite)
-    valConrole(rubricSiteValue,rubricSiteValueDetector, rubricSite);
-    valConrole(publicSiteValue,publicSiteValueDetector,publicSite);
-    valConrole(commentsSiteValue,commentsSiteValueDetector,commentsSite);
-
-    console.log(form);
+    valConrole(nameSiteValue, nameSiteValueDetector, nameSite);
+    valConrole(urlSiteValue, urlSiteValueDetector, urlSite);
+    valConrole(startdateSiteValue, startdateSiteValueDetector, startdateSite);
+    valConrole(personsSiteValue, personsSiteValueDetector, personsSite);
+    valConrole(emailSiteValue, emailSiteValueDetector, emailSite)
+    valConrole(rubricSiteValue, rubricSiteValueDetector, rubricSite);
+    valConrole(publicSiteValue, publicSiteValueDetector, publicSite);
+    valConrole(commentsSiteValue, commentsSiteValueDetector, commentsSite);
 
 
+    function check() {
+        document.getElementsByTagName("public").checked
 
-function valConrole(e,p,f){
-    if (e.length ) {
-        p.style.display='none';
-    }else {
-        p.style.display='block';
-         f.focus;
-         event.preventDefault();
+    }
+
+    console.log(check());
+    function valConrole(e, p, f) {
+        if (!e) {
+            p.style.display = 'block';
+            f.focus;
+            EO.preventDefault();
+        } else {
+            p.style.display = 'none';
+
+        }
+
+
+    } form.removeEventListener('submit', validate, false);
 }
-
-
-}form.removeEventListener('submit', validate,false);}
-form.addEventListener('submit', validate,false);
-form.addEventListener('click'&&'focusout',()=>{
+form.addEventListener('submit', validate, false);
+form.addEventListener('click' && 'focusout', () => {
     const form = document.querySelector('form');
     const parag = form.querySelectorAll('p');
 
-    
 
 
+    for (let elem of parag) {
+        if (elem.id === event.target.name) {
+            if (!event.target.value) {
+                elem.style.display = 'block';
 
-
-
-    for (let elem of parag){
-            if(elem.id === event.target.name){
-                if(!event.target.value){elem.style.display='block';
-        
-            }else if(event.target.value){elem.style.display='none';}
-            }
+            } else if (event.target.value) { elem.style.display = 'none'; }
         }
+
+
+
     }
-}                     
-    
-        
-  
+})
+
+
