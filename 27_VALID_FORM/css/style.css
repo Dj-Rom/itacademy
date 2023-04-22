@@ -1,0 +1,90 @@
+*{
+    box-sizing: border-box;
+    line-height: 20px;
+    border-radius: 4px;
+}
+.form_hw{
+    position: relative;
+    width: 800px;
+   
+    
+}
+#nameS,#urlS{
+    position: absolute;
+   width: 350px;
+   left: 170px;
+   height: 20px;
+}
+#startdater{
+    position: absolute;
+   width: 80px;
+   left: 170px;
+   height: 19.5px;
+}
+#personS{
+    
+position: absolute;
+   width: 80px;
+   left: 170px;
+   
+}
+
+#emailS{
+    position: absolute;
+   width: 250px;
+   left: 170px;
+   margin-top: 2px;
+}
+#rubric1{
+    position: absolute;
+    width: 167px;
+    left: 170px;
+    margin-top: 6px;
+   
+}
+
+#radio1{
+    position: absolute;
+    left: 170px;
+    margin-top: 7px;
+}
+#radio2{
+    position: absolute;
+    left: 320px;
+    margin-top: 7px;
+}
+#radio3{
+    position: absolute;
+    left: 470px;
+    margin-top: 7px;
+}
+.SRadio8a1{
+    position: absolute;
+    left: 190px;
+    margin-top: 2px;
+}
+.SRadio8a2{
+    position: absolute;
+    left: 340px;
+    margin-top: 2px;
+}
+.SRadio8a3{
+    position: absolute;
+    left: 490px;
+    margin-top: 2px;
+}
+#commentS{
+    position: absolute;
+    left: 170px;
+    border-radius: 2px;
+}
+
+p{
+    position: absolute;
+    display: block;
+    right: 70px;
+    margin-top: -18px;
+    display: none;
+    color: red;
+    font-size: small;
+}

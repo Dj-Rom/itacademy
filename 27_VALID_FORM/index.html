@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <div class="contener">
+        <div class="form_hw">
+
+            <form method="POST" id="formS" action="https://fe.it-acadey.by/TestForm.php">
+
+                <label for="name" > Название сайта: </label>
+                <input type="text" id="nameS" name="name">
+                <p id="name">Название сайта: Ввод некорректен</p><br>
+                <label for="url" > URL сайта: </label> 
+                <input type="text" id="urlS" name="url">
+                <p id="url">  URL сайта: Ввод некорректен</p><br>
+                <label for="startdate" > Дата запуска сайта: </label>
+                <input type="date" id="startdater" name="startdate" ><p id="startdate">Дата запуска сайта: Ввод некорректен</p><br>
+                <label for="persons"> Посетителей в сутки: </label>
+                <input type="textpersons" id="personS" name="persons">
+                <p id="persons">Посетителей в сутки: Ввод некорректен</p><br>
+
+                <label for="email" "> E-mail для связи: </label>
+                <input type="text" id="emailS" name="email">
+                <p id="email">E-mail для связи: Ввод некорректен</p>
+                <br>
+                <label for="rubric" > Рубрика каталога: </label>
+                <select name="rubric" id="rubric1" >
+                    <option value="1">здоровье</option>
+                    <option value="2">домашний уют</option>
+                    <option value="3" >бытовая техника</option>
+                </select>
+                <br>
+                <label for="public"> Размещение: </label><p id="public"> Размещение: Ввод некорректен</p>
+                <input type="radio" id="radio1" name="public" value="1"><span class="SRadio8a1">бесплатное</span>
+                <input type="radio" id="radio2" name="public" value="2"><span class="SRadio8a2">платное</span>
+                <input type="radio" id="radio3" name="public" value="3"><span class="SRadio8a3">VIP</span>
+                <br><label for="comments" > Разрешить&nbsp;отзывы: </label>
+                <input type="checkbox" id="commentS" name="comments"><br>
+                <label for="article" > Описание сайта: </label><br>
+                <p id="article">Описание сайта: Ввод некорректен</p><br>
+                <textarea name="article" id="article" style="width: 608px; height: 50px" minlength="10"
+                    maxlength="300"></textarea>
+                <br><input type="submit" id="btn" value="Опубликовать"><br>
+
+            </form>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
