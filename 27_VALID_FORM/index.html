@@ -29,21 +29,23 @@
                 <p id="persons">Посетителей в сутки: Ввод некорректен</p><br>
 
                 <label for="email" > E-mail для связи: </label>
-                <input type="text" id="emailS" name="email">
+                <input type="email" id="emailS" name="email">
                 <p id="email">E-mail для связи: Ввод некорректен</p>
                 <br>
-                <label for="rubric" > Рубрика каталога: </label>
-                <select name="rubric" id="rubric1" >
+                <label for="rubric" > Рубрика каталога: </label><p id="rubric">Рубрика каталога:Ввод некорректен</p>
+                <select name="rubric" id="rubric1" onchange="" >
+                    <option value="0"></option>
                     <option value="1">здоровье</option>
                     <option value="2">домашний уют</option>
                     <option value="3" >бытовая техника</option>
                 </select>
+                
                 <br>
                 <label for="public"> Размещение: </label><p id="public"> Размещение: Ввод некорректен</p>
                 <input type="radio" id="radio1" name="public" value="1"><span class="SRadio8a1">бесплатное</span>
                 <input type="radio" id="radio2" name="public" value="2"><span class="SRadio8a2">платное</span>
                 <input type="radio" id="radio3" name="public" value="3"><span class="SRadio8a3">VIP</span>
-                <br><label for="comments" > Разрешить&nbsp;отзывы: </label>
+                <br><label for="comments" > Разрешить&nbsp;отзывы: </label><p id="comments"> Разрешить&nbsp;отзывы: Ввод некорректен</p>
                 <input type="checkbox" id="commentS" name="comments"><br>
                 <label for="article" > Описание сайта: </label><br>
                 <p id="article">Описание сайта: Ввод некорректен</p><br>
@@ -55,6 +57,44 @@
         </div>
     </div>
     <script src="./js/main.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 
 </html>
