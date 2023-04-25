@@ -1,81 +1,65 @@
-"use strict";
+<!DOCTYPE html>
+<html lang="en">
 
-const p = document.querySelectorAll("p"),
-    form = document.querySelector("form"),
-    radio = document.getElementsByName('public');
-let checkedOn = Boolean;
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>N27t</title>
 
+</head>
 
-function validate(EO) {
-    EO = EO || window.event;
-    const form = document.querySelector("form");
-    const nameSite = form.elements.name;
-    const nameSiteValue = nameSite.value;
-    const nameSiteValueDetector = document.querySelector("#name");
-    const urlSite = form.elements.url;
-    const urlSiteValue = urlSite.value;
-    const urlSiteValueDetector = document.querySelector("#url");
-    const startdateSite = form.elements.startdate;
-    const startdateSiteValue = startdateSite.value;
-    const startdateSiteValueDetector = document.querySelector("#startdate");
-    const personsSite = form.elements.persons;
-    const personsSiteValue = personsSite.value;
-    const personsSiteValueDetector = document.querySelector("#persons");
-    const emailSite = form.elements.email;
-    const emailSiteValue = emailSite.value;
-    const emailSiteValueDetector = document.querySelector("#email");
-    const rubricSite = form.elements.rubrI;
-    const rubricChange = document.getElementById('rubric1').selectedIndex;
-    const rubricSiteValueDetector = document.getElementById("rubrI");
-    const publicSite = form.elements.publ;
-    const publicSiteValue = publicSite.value;
-    const publicSiteValueDetector = document.getElementById("publ");
-    const commentsSite = form.elements.comments;
-    const coomentChecked = document.getElementById("commentS").checked;
-    const commentsSiteValueDetector = document.getElementById("commenT");
-    const articleSite = form.elements.article;
-    const articleSiteValue = articleSite.value;
-    const articleSiteValueDetector = document.querySelector("#article");
+<body>
+    <div class="contener">
+        <div class="form_hw">
 
-    let arrayC = [];
+            <form method="POST" id="formS" action="https://fe.it-academy.by/TestForm.php">
 
-    valConrole(nameSiteValue, nameSiteValueDetector, nameSite);
-    valConrole(urlSiteValue, urlSiteValueDetector, urlSite);
-    valConrole(startdateSiteValue, startdateSiteValueDetector, startdateSite);
-    valConrole(personsSiteValue, personsSiteValueDetector, personsSite);
-    valConrole(emailSiteValue, emailSiteValueDetector, emailSite);
-    valConrole(rubricChange, rubricSiteValueDetector, rubricSite);
-    valConrole(coomentChecked, commentsSiteValueDetector, commentsSite);
-    valConrole(articleSiteValue, articleSiteValueDetector, articleSite);
-    valConrole(publicSiteValue, publicSiteValueDetector, publicSite);
+                <label for="name"> Название сайта: </label>
+                <input type="text" id="nameS" name="name">
+                <p id="name">Название сайта: Ввод некорректен</p><br>
+                <label for="url"> URL сайта: </label>
+                <input type="text" id="urlS" name="url">
+                <p id="url"> URL сайта: Ввод некорректен</p><br>
+                <label for="startdate"> Дата запуска сайта: </label>
+                <input type="date" id="startdater" name="startdate">
+                <p id="startdate">Дата запуска сайта: Ввод некорректен</p><br>
+                <label for="persons"> Посетителей в сутки: </label>
+                <input type="number" min="0" id="personS" name="persons">
+                <p id="persons">Посетителей в сутки: Ввод некорректен</p><br>
 
-    arrayC[0].focus({
-        preventScroll: true
-    });
+                <label for="email"> E-mail для связи: </label>
+                <input type="email" id="emailS" name="email">
+                <p id="email">E-mail для связи: Ввод некорректен</p>
+                <br>
+                <label for="rubric"> Рубрика каталога: </label>
+                <select name="rubrI" id="rubric1">
+                    <option value="0"></option>
+                    <option value="1">здоровье</option>
+                    <option value="2">домашний уют</option>
+                    <option value="3">бытовая техника</option>
+                </select>
+                <p id="rubrI">Рубрика каталога:Ввод некорректен</p>
+                <br>
+                <label for="publ"> Размещение: </label>
+                <input type="radio" id="radio1" name="publ" value="1"><span class="SRadio8a1">бесплатное</span>
+                <input type="radio" id="radio2" name="publ" value="2"><span class="SRadio8a2">платное</span>
+                <input type="radio" id="radio3" name="publ" value="3"><span class="SRadio8a3">VIP</span>
+                <p id="publ"> Размещение: Ввод некорректен</p>
+                <br><label for="commenT"> Разрешить&nbsp;отзывы: </label>
+                <input type="checkbox" id="commentS" name="commenT">
+                <p id="commenT"> Разрешить&nbsp;отзывы: Ввод некорректен</p><br>
+                <label for="article"> Описание сайта: </label><br>
+                <p id="article">Описание сайта: Ввод некорректен</p><br>
+                <textarea name="article" style="width: 608px; height: 50px" minlength="10" maxlength="300"></textarea>
+                <br><input type="submit" id="btn" value="Опубликовать"><br>
 
-    function valConrole(e, p, f) {
-        if (!e || e === 0) {
-            EO.preventDefault();
-            p.style.display = "block";
-            return arrayC.push(f)
-        } else {
-            p.style.display = "none";
-        }
-    }
-}
+            </form>
+        </div>
+    </div>
+    <script src="./js/main.js"></script>
 
-form.addEventListener("submit", validate, false);
-form.addEventListener("focusout", (event) => {
-    const form = document.querySelector("form");
-    const parag = form.querySelectorAll("p");
+</body>
 
-    for (let elem of parag) {
-        if (elem.id === event.target.name) {
-            if (!event.target.value) {
-                elem.style.display = "block";
-            } else if (event.target.value) {
-                elem.style.display = "none";
-            }
-        }
-    }
-});
+</html>
