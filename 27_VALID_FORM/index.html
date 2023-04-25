@@ -1,100 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
+"use strict";
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+const p = document.querySelectorAll("p"),
+    form = document.querySelector("form"),
+    radio = document.getElementsByName('public');
+let checkedOn = Boolean;
 
-</head>
 
-<body>
-    <div class="contener">
-        <div class="form_hw">
+function validate(EO) {
+    EO = EO || window.event;
+    const form = document.querySelector("form");
+    const nameSite = form.elements.name;
+    const nameSiteValue = nameSite.value;
+    const nameSiteValueDetector = document.querySelector("#name");
+    const urlSite = form.elements.url;
+    const urlSiteValue = urlSite.value;
+    const urlSiteValueDetector = document.querySelector("#url");
+    const startdateSite = form.elements.startdate;
+    const startdateSiteValue = startdateSite.value;
+    const startdateSiteValueDetector = document.querySelector("#startdate");
+    const personsSite = form.elements.persons;
+    const personsSiteValue = personsSite.value;
+    const personsSiteValueDetector = document.querySelector("#persons");
+    const emailSite = form.elements.email;
+    const emailSiteValue = emailSite.value;
+    const emailSiteValueDetector = document.querySelector("#email");
+    const rubricSite = form.elements.rubrI;
+    const rubricChange = document.getElementById('rubric1').selectedIndex;
+    const rubricSiteValueDetector = document.getElementById("rubrI");
+    const publicSite = form.elements.publ;
+    const publicSiteValue = publicSite.value;
+    const publicSiteValueDetector = document.getElementById("publ");
+    const commentsSite = form.elements.comments;
+    const coomentChecked = document.getElementById("commentS").checked;
+    const commentsSiteValueDetector = document.getElementById("commenT");
+    const articleSite = form.elements.article;
+    const articleSiteValue = articleSite.value;
+    const articleSiteValueDetector = document.querySelector("#article");
 
-            <form method="POST" id="formS" action="https://fe.it-academy.by/TestForm.php">
+    let arrayC = [];
 
-                <label for="name" > Название сайта: </label>
-                <input type="text" id="nameS" name="name">
-                <p id="name">Название сайта: Ввод некорректен</p><br>
-                <label for="url" > URL сайта: </label> 
-                <input type="text" id="urlS" name="url">
-                <p id="url">  URL сайта: Ввод некорректен</p><br>
-                <label for="startdate" > Дата запуска сайта: </label>
-                <input type="date" id="startdater" name="startdate" ><p id="startdate">Дата запуска сайта: Ввод некорректен</p><br>
-                <label for="persons"> Посетителей в сутки: </label>
-                <input type="number" min="0" max="11000" id="personS" name="persons">
-                <p id="persons">Посетителей в сутки: Ввод некорректен</p><br>
+    valConrole(nameSiteValue, nameSiteValueDetector, nameSite);
+    valConrole(urlSiteValue, urlSiteValueDetector, urlSite);
+    valConrole(startdateSiteValue, startdateSiteValueDetector, startdateSite);
+    valConrole(personsSiteValue, personsSiteValueDetector, personsSite);
+    valConrole(emailSiteValue, emailSiteValueDetector, emailSite);
+    valConrole(rubricChange, rubricSiteValueDetector, rubricSite);
+    valConrole(coomentChecked, commentsSiteValueDetector, commentsSite);
+    valConrole(articleSiteValue, articleSiteValueDetector, articleSite);
+    valConrole(publicSiteValue, publicSiteValueDetector, publicSite);
 
-                <label for="email" > E-mail для связи: </label>
-                <input type="email" id="emailS" name="email">
-                <p id="email">E-mail для связи: Ввод некорректен</p>
-                <br>
-                <label for="rubric" > Рубрика каталога: </label><p id="rubric">Рубрика каталога:Ввод некорректен</p>
-                <select name="rubric" id="rubric1" onchange="" >
-                    <option value="0"></option>
-                    <option value="1">здоровье</option>
-                    <option value="2">домашний уют</option>
-                    <option value="3" >бытовая техника</option>
-                </select>
-                
-                <br>
-                <label for="public"> Размещение: </label><p id="public"> Размещение: Ввод некорректен</p>
-                <input type="radio" id="radio1" name="public" value="1"><span class="SRadio8a1">бесплатное</span>
-                <input type="radio" id="radio2" name="public" value="2"><span class="SRadio8a2">платное</span>
-                <input type="radio" id="radio3" name="public" value="3"><span class="SRadio8a3">VIP</span>
-                <br><label for="comments" > Разрешить&nbsp;отзывы: </label><p id="comments"> Разрешить&nbsp;отзывы: Ввод некорректен</p>
-                <input type="checkbox" id="commentS" name="comments"><br>
-                <label for="article" > Описание сайта: </label><br>
-                <p id="article">Описание сайта: Ввод некорректен</p><br>
-                <textarea name="article"  style="width: 608px; height: 50px" minlength="10"
-                    maxlength="300"></textarea>
-                <br><input type="submit" id="btn" value="Опубликовать"><br>
+    arrayC[0].focus({
+        preventScroll: true
+    });
 
-            </form>
-        </div>
-    </div>
-    <script src="./js/main.js"></script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-</body>
+    function valConrole(e, p, f) {
+        if (!e || e === 0) {
+            EO.preventDefault();
+            p.style.display = "block";
+            return arrayC.push(f)
+        } else {
+            p.style.display = "none";
+        }
+    }
+}
 
-</html>
+form.addEventListener("submit", validate, false);
+form.addEventListener("focusout", (event) => {
+    const form = document.querySelector("form");
+    const parag = form.querySelectorAll("p");
+
+    for (let elem of parag) {
+        if (elem.id === event.target.name) {
+            if (!event.target.value) {
+                elem.style.display = "block";
+            } else if (event.target.value) {
+                elem.style.display = "none";
+            }
+        }
+    }
+});
