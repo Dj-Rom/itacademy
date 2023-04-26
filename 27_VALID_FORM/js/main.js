@@ -65,9 +65,9 @@ function validate(EO) {
 }
 
 form.addEventListener("submit", validate, false);
-form.addEventListener("focusout", polecontrol); 
-form.addEventListener("input", polecontrol);    
-function polecontrol(event){
+form.addEventListener("focusout", poleControl); 
+form.addEventListener("input", poleControl);    
+function poleControl(event){
     const form = document.querySelector("form");
     const parag = form.querySelectorAll("p");
 
