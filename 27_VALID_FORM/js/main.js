@@ -65,7 +65,7 @@ function validate(EO) {
 }
 
 form.addEventListener("submit", validate, false);
-form.addEventListener("click", polecontrol); 
+form.addEventListener("focusout", polecontrol); 
 form.addEventListener("input", polecontrol);    
 function polecontrol(event){
     const form = document.querySelector("form");
