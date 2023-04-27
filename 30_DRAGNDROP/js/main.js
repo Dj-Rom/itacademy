@@ -2,30 +2,30 @@
 
 // first, load all img
 
-window.onload = dragDrop;
+window.addEventListener("load",dragDrop)
 
-function dragDrop (eo) {
-    eo=eo||window.event;
+function dragDrop () {
+    
 
     let shiftX,
      shiftY,
      dragImg = null;
     // We iterate over all images
-    const allImgInDocument = document.getElementsByTagName('img');
+    const allImgInDocument = document.querySelectorAll('img');
 
     // iterate over the allImgInDocument
     for(const elem of allImgInDocument){
-        elem.style.top = elem.offsetTop;
-        elem.style.left = elem.offsetLeft;
-    }   
-    for(let elem  of allImgInDocument){
-        elem.style.position = 'absolute';
+        elem.style.top = elem.offsetTop +'px';
+        elem.style.left = elem.offsetLeft +'px';
+       }
+    setTimeout(() => {
+    for(const elem  of allImgInDocument){
+        elem.style.position = "absolute";
         window.addEventListener('mousedown', mouseDown);
         window.addEventListener('mouseup', mouseUp);
-        }
-
+        }}, 5000);
    
-
+    
 
     function mouseDown (eo){
         eo=eo||window.event;
@@ -47,9 +47,9 @@ function dragDrop (eo) {
     }
 
     function mouseUp (eo){
+        eo=eo||window.event;
         dragImg = null
         eo.target.style.zIndex = "0"
-        eo=eo||window.event;
         window.removeEventListener('mousemove', mouseMove);  
     }
 }
