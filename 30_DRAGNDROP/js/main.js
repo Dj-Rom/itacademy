@@ -39,6 +39,7 @@ function dragDrop () {
 
     function mouseMove (eo){
         eo=eo||window.event;
+        console.log('move');
        if( dragImg ){
         dragImg.style.left = (eo.pageX-shiftX) +'px';
         dragImg.style.top = (eo.pageY - shiftY) +'px';
@@ -48,6 +49,7 @@ function dragDrop () {
 
     function mouseUp (eo){
         eo=eo||window.event;
+        console.log('up');
         dragImg = null
         eo.target.style.zIndex = "0"
         window.removeEventListener('mousemove', mouseMove);  
