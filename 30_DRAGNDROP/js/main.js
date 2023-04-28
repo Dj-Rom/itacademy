@@ -28,6 +28,7 @@ function dragDrop () {
     function mouseDown (eo){
         eo=eo||window.event;
         eo.preventDefault();
+        eo.target.style.cursor = 'grab';
         zIndexNewValue++;
         console.log('down');
         dragImg = eo.target;
@@ -50,6 +51,7 @@ function dragDrop () {
 
     function mouseUp (eo){
         eo=eo||window.event;
+        eo.target.style.cursor = 'auto';
         console.log('up');
         dragImg = null;
         window.removeEventListener('mousemove', mouseMove);  
