@@ -5,7 +5,7 @@
 window.addEventListener("load",dragDrop)
 
 function dragDrop () {
-    
+
 
     let shiftX,
      shiftY,
@@ -18,17 +18,16 @@ function dragDrop () {
         elem.style.top = elem.offsetTop +'px';
         elem.style.left = elem.offsetLeft +'px';
        }
-    setTimeout(() => {
     for(const elem  of allImgInDocument){
         elem.style.position = "absolute";
         window.addEventListener('mousedown', mouseDown);
         window.addEventListener('mouseup', mouseUp);
-        }}, 5000);
-   
+    }
     
 
     function mouseDown (eo){
         eo=eo||window.event;
+        eo.preventDefault();
         console.log('down');
         dragImg = eo.target
         shiftX = eo.pageX - dragImg.offsetLeft;
