@@ -28,12 +28,12 @@ function dragDrop () {
     function mouseDown (eo){
         eo=eo||window.event;
         eo.preventDefault();
-        ++zIndexNewValue;
+        zIndexNewValue++;
         console.log('down');
         dragImg = eo.target;
         shiftX = eo.pageX - dragImg.offsetLeft;
         shiftY = eo.pageY -dragImg.offsetTop;
-        dragImg.style.zIndex = `${zIndexNewValue}`;
+        
         window.addEventListener('mousemove', mouseMove);
     }
 
@@ -41,6 +41,7 @@ function dragDrop () {
         eo=eo||window.event;
         console.log('move');
        if( dragImg ){
+        dragImg.style.zIndex = `${zIndexNewValue}`;
         dragImg.style.left = (eo.pageX-shiftX) +'px';
         dragImg.style.top = (eo.pageY - shiftY) +'px';
        }
