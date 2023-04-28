@@ -8,8 +8,9 @@ function dragDrop () {
 
 
     let shiftX,
-     shiftY,
-     dragImg = null;
+        shiftY,
+        zIndexNewValue = 0,
+        dragImg = null;
     // We iterate over all images
     const allImgInDocument = document.querySelectorAll('img');
 
@@ -20,19 +21,19 @@ function dragDrop () {
        }
     for(const elem  of allImgInDocument){
         elem.style.position = "absolute";
-        window.addEventListener('mousedown', mouseDown);
-        window.addEventListener('mouseup', mouseUp);
     }
-    
+       window.addEventListener('mousedown', mouseDown);
+       window.addEventListener('mouseup', mouseUp);
 
     function mouseDown (eo){
         eo=eo||window.event;
         eo.preventDefault();
+        ++zIndexNewValue;
         console.log('down');
-        dragImg = eo.target
+        dragImg = eo.target;
         shiftX = eo.pageX - dragImg.offsetLeft;
         shiftY = eo.pageY -dragImg.offsetTop;
-        dragImg.style.zIndex = "5"
+        dragImg.style.zIndex = `${zIndexNewValue}`;
         window.addEventListener('mousemove', mouseMove);
     }
 
@@ -49,8 +50,7 @@ function dragDrop () {
     function mouseUp (eo){
         eo=eo||window.event;
         console.log('up');
-        dragImg = null
-        eo.target.style.zIndex = "0"
+        dragImg = null;
         window.removeEventListener('mousemove', mouseMove);  
     }
 }
