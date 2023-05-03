@@ -1,5 +1,5 @@
 "use strict";
-
+// создаем константы, переменные
 const divClockCiferblat = document.querySelector('.clock');
 const handHour = document.querySelector('.hand_hour');
 const handMin = document.querySelector('.hand_min');
@@ -8,15 +8,12 @@ const clockDisplay = document.querySelector('.clock_display');
 const firstWindow = document.querySelector('.firstWindow');
 const widhtUser = document.querySelector('#widhtUser');
 let userWidht;
-const btn = document.getElementById('btn'),
-      inputValue = document.getElementById('EnterNumber');
-   
+const btn = document.getElementById('btn');
+const inputValue = document.getElementById('EnterNumber');
 let inputUserTime= +inputValue.value;
-//style for ciferblat
+//стиль циферблата + активатор display
 function clockBack (display){
-    
     divClockCiferblat.style.left="50px"
-    
     divClockCiferblat.style.top="50px"
     divClockCiferblat.style.position = 'relative';
     divClockCiferblat.style.backgroundColor = '#f6cd82';
@@ -25,23 +22,23 @@ function clockBack (display){
     divClockCiferblat.style.width = userWidht +"px";
     divClockCiferblat.style.display = `${display}`;
 }   clockBack ('none');
-
+// при клике на кнопку вызываем функцию проверку правильности ввода
 btn.addEventListener('click', proverkaVvodaNumber);
 
-// proverka na vvod number
+// фунцуия проверки ввода кол-во секунд
 function proverkaVvodaNumber(){
     inputUserTime = inputValue.value;
-
+// если истина, строим часы
 if( inputUserTime <= 86400 && inputUserTime > 0 ){
     userWidht = +widhtUser.value
     clockDisplay.style.fontSize=userWidht/10+'px'
-
     inputDisplayNone(event);
+    //если лож кидаем алерт
 }else{
     alert("powtorite vvod")
 }
 
-
+//функция построения часов
 function inputDisplayNone (eo){
           eo.preventDefault();
           eo=eo||window.event;
@@ -49,7 +46,7 @@ function inputDisplayNone (eo){
         
           clockBack ('block');
         secondInHour(inputUserTime);
- 
+ // таймер 
 setInterval(()=>{
     inputUserTime=parseInt(inputUserTime) ;
      inputUserTime += 1;
@@ -60,14 +57,12 @@ setInterval(()=>{
 
 }
 
-
+// функция построения цифр на циферблате
 function newDivCyfry(){
-// uznaem koordinat centr div
+// узнаем центер циферблата
 const ciferCenter = getElementPos(divClockCiferblat);
 let ciferTime = 0;
-// sozdaem div s ciframi
-    // delaem cykl
-   
+// создаем цикл
     for(let i=0; i <= 12; i++){
         //w div s osnowoj pod ciferblat dobovljaem detej
         const clockTimeNumber = document.createElement("div");
@@ -85,7 +80,7 @@ let ciferTime = 0;
         
         ciferTime += 30;
     }
-
+// вызываем функцию
 }newDivCyfry()
 
 
@@ -93,7 +88,7 @@ let ciferTime = 0;
 
 
 
-// dobavljaem matematiku)))
+// немножко математики перевод секунд в часы, мин, секунды
 function secondInHour (sec){
     
     let onlyHour=0,
@@ -135,7 +130,7 @@ function secondInHour (sec){
      if(onlysecond<10){
         onlysecondR = `0${onlysecond}`;
      }else onlysecondR = onlysecond;
-
+// выводим в циферблат цифровое табло
      clockDisplay.innerHTML=clockDisplay.value=`${onlyHourR}:${onlyMinR}:${onlysecondR}`;
 
      }
@@ -145,102 +140,3 @@ function secondInHour (sec){
     
  } 
    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// center ciferblata
-function getElementPos(elem) {
-    const bbox=elem.getBoundingClientRect();
-    return {
-        left: bbox.left+window.pageXOffset+userWidht/2,
-        top: bbox.top+window.pageYOffset+userWidht/2
-    };
-}
-
-
-
-//position hand in the centr ciferblat
-
-// function handPosition (hand){
-//     hand.style.position = "absolute";
-//     if(hand==handHour){hand.style.height = (userWidht / 100 * 25)+'px';}
-//     else if  (hand==handSecond) {hand.style.height = (userWidht / 100 * 37)+'px';}
-//     else hand.style.height = (userWidht / 100 * 33)+'px';
-    
-// }
-
-
-
-
