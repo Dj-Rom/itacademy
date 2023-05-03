@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.classEnter{
+    display:block;
+
+
+}
+.firstWindow{
+    position: relative;
+}
+
+.clock_display{
+    position: absolute;
+    left: 35%;
+    top: 20%;
+    z-index: 0;
+    height: 120px;
+    width: 120px;
+    
+    
+}
+.hand_second{
+    
+    position: absolute;
+    background-color: rgb(228, 29, 29);
+    border-radius: 5px;
+    bottom : 50%;
+    left: 50%;
+    height: 35%;
+    z-index: 1;
+    transform-origin: bottom;
+   
+    width: 2px;
+}
+.hand_hour{
+   
+    position: absolute;
+    background-color: black;
+    border-radius: 5px;
+    bottom : 50%;
+    left: 50%;
+    height: 25%;
+    z-index: 1;
+    transform-origin: bottom;
+    width: 6px;
+}
+.hand_min{
+    position: absolute;
+    background-color: black;
+    border-radius: 5px;
+    bottom : 50%;
+    z-index: 1;
+    left: 50%;
+    height: 30%;
+    transform-origin: bottom;
+    width: 4px;
+}
