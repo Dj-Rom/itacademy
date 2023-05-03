@@ -134,9 +134,12 @@ function secondInHour (sec){
      clockDisplay.innerHTML=clockDisplay.value=`${onlyHourR}:${onlyMinR}:${onlysecondR}`;
 
      }
-
-     
-
-    
  } 
+function getElementPos(elem) {
+    const bbox=elem.getBoundingClientRect();
+    return {
+        left: bbox.left+window.pageXOffset+userWidht/2,
+        top: bbox.top+window.pageYOffset+userWidht/2
+    };
+}
    
