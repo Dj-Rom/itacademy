@@ -63,7 +63,7 @@ function newDivCyfry(){
 const ciferCenter = getElementPos(divClockCiferblat);
 let ciferTime = 0;
 // создаем цикл
-    for(let i=0; i <= 12; i++){
+    for(let i=0; i < 12; i++){
         //w div s osnowoj pod ciferblat dobovljaem detej
         const clockTimeNumber = document.createElement("div");
         const gradus=ciferTime/180*Math.PI;
