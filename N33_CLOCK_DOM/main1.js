@@ -71,7 +71,7 @@ function proverkaVvodaNumber() {
     // узнаем центер циферблата
     const ciferCenter = getElementPos(divClockCiferblat);
     // установить цифру 1 в положение 30 градусов от полудня
-    let gradusDljaPosiiCyfry = 30;
+    let gradusDljaPosiiCyfry = 360/12;
     // создаем цикл
     for (let i = 1; i < 13; i++) {
       //в основной циферблат добавляем цифры
@@ -91,7 +91,7 @@ function proverkaVvodaNumber() {
       clockTimeNumber.innerHTML =
         clockTimeNumber.style = `position: absolute; left: ${
           clockTimeNumber.left
-        }; top: ${clockTimeNumber.top}; width: ${userWidht / 10}px; ${
+        }; top: ${clockTimeNumber.top}; width: ${userWidht / 9}px; ${
           userWidht / 10
         }px; border-radius:50%; text-align: center;background-color:#1dcc48; z-index: 1; font-size:${
           userWidht / 10
