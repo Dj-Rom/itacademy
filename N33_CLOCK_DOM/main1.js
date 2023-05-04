@@ -71,12 +71,12 @@ function proverkaVvodaNumber() {
     // узнаем центер циферблата
     const ciferCenter = getElementPos(divClockCiferblat);
     // установить цифру 1 в положение 30 градусов от полудня
-    let gradusDljaPosociiCyfry = 30;
+    let gradusDljaPosiiCyfry = 30;
     // создаем цикл
     for (let i = 1; i < 13; i++) {
       //в основной циферблат добавляем цифры
       const clockTimeNumber = document.createElement("div");
-      const gradus = (gradusDljaPosociiCyfry / 180) * Math.PI;
+      const gradus = (gradusDljaPosiiCyfry / 180) * Math.PI;
       const rast = (userWidht / 100) * 40;
       const divClockCiferblatCenterX = ciferCenter.left - 50;
       const divClockCiferblatCenterY = ciferCenter.top - 50;
@@ -98,8 +98,8 @@ function proverkaVvodaNumber() {
         }px; `;
       clockTimeNumber.innerHTML = clockTimeNumber.value = `${i}`;
       divClockCiferblat.appendChild(clockTimeNumber);
-      //  увеличиваем после прохода цикла на 30 чтобы позиционировать следующую цифру
-      gradusDljaPosociiCyfry += 30;
+      //  увеличиваем после прохода цикла на 30 градисов чтобы позиционировать следующую цифру
+      gradusDljaPosiiCyfry += (360/12);
     }
   }
 
