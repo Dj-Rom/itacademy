@@ -9,8 +9,9 @@ const firstWindow = document.querySelector('.firstWindow');
 const widhtUser = document.querySelector('#widhtUser');
 let userWidht;
 const btn = document.getElementById('btn');
-const inputValue = document.getElementById('EnterNumber');
-let inputUserTime= +inputValue.value;
+const date = new Date();
+const inputValue =  date.getTime();
+
 //стиль циферблата + активатор display
 function clockBack (display){
     divClockCiferblat.style.left="50px"
@@ -25,11 +26,11 @@ function clockBack (display){
 // при клике на кнопку вызываем функцию проверку правильности ввода
 btn.addEventListener('click', proverkaVvodaNumber);
 
-// фунцуия проверки ввода кол-во секунд
+// фунkция проверки ввода 
 function proverkaVvodaNumber(){
-    inputUserTime = inputValue.value;
+    
 // если истина, строим часы
-if( inputUserTime <= 86400 && inputUserTime > 0 ){
+if( widhtUser.value){
     userWidht = +widhtUser.value
     clockDisplay.style.fontSize=userWidht/10+'px'
     inputDisplayNone(event);
@@ -43,16 +44,18 @@ function inputDisplayNone (eo){
           eo.preventDefault();
           eo=eo||window.event;
           firstWindow.style.display = "none";
-        
           clockBack ('block');
-        secondInHour(inputUserTime);
+        
+          newDivCyfry()
+         
  // таймер 
 setInterval(()=>{
-    inputUserTime=parseInt(inputUserTime) ;
+    const date = new Date();
+    let inputUserTime=parseInt(inputValue) ;
      inputUserTime += 1;
      secondInHour(inputUserTime);
-     const controleTime = new Date();
-     console.log(controleTime.toLocaleTimeString('it-IT'));
+     
+     console.log(date.toLocaleTimeString('it-IT'));
 },1000);
 
 }
@@ -61,9 +64,10 @@ setInterval(()=>{
 function newDivCyfry(){
 // узнаем центер циферблата
 const ciferCenter = getElementPos(divClockCiferblat);
-let ciferTime = 0;
+// ustanavlivaem 12 po centru
+let ciferTime = 30;
 // создаем цикл
-    for(let i=0; i < 12; i++){
+    for(let i=1; i < 13; i++){
         //w div s osnowoj pod ciferblat dobovljaem detej
         const clockTimeNumber = document.createElement("div");
         const gradus=ciferTime/180*Math.PI;
@@ -81,7 +85,7 @@ let ciferTime = 0;
         ciferTime += 30;
     }
 // вызываем функцию
-}newDivCyfry()
+}
 
 
 
@@ -90,27 +94,16 @@ let ciferTime = 0;
 
 // немножко математики перевод секунд в часы, мин, секунды
 function secondInHour (sec){
-    
-    let onlyHour=0,
-        onlyMin=0,
-        onlysecond=0;
-    const deg = 6;
-
+    const date = new Date();
+    sec= sec/1000
+   
     var  secund = +sec;
     
 
- 
-     let howMuchHour = sec/3600;
-        onlyHour = Math.trunc(howMuchHour);
- 
-     let howMuchMin = sec/60 - onlyHour*60;
-         onlyMin = Math.trunc(howMuchMin);
-
-     let howMuchsec = (howMuchMin - onlyMin)*60
-     onlysecond=howMuchsec.toFixed([0]);
-     const hh = onlyHour * 30;
-     const mm = onlyMin * deg;
-     const ss = onlysecond * deg;
+ const deg = 6;
+     const hh = date.getHours() * 30;
+     const mm = date.getMinutes() * deg;
+     const ss = date.getSeconds() * deg;
      handHour.style.transform = `rotateZ(${hh + (mm/12)}deg)`
      handMin.style.transform = `rotateZ(${(mm)}deg)`
      handSecond.style.transform = `rotateZ(${(ss)}deg)`
@@ -119,22 +112,30 @@ function secondInHour (sec){
      let onlyMinR,
         onlyHourR,
          onlysecondR;
-     if(onlyHour==0){
+     if(date.getHours()==0){
         onlyHourR = '00';
         
-    }else  onlyHourR=  `${onlyHour}`;
+    }else  onlyHourR = date.getHours();
     
-     if(onlyMin<10){
-        onlyMinR = `0${onlyMin}`;
-     }else onlyMinR = onlyMin;
-     if(onlysecond<10){
-        onlysecondR = `0${onlysecond}`;
-     }else onlysecondR = onlysecond;
+     if(date.getMinutes()<10){
+        onlyMinR = `0${date.getMinutes()}`;
+     }else onlyMinR = date.getMinutes();
+     if(date.getSeconds() <10){
+        onlysecondR = `0${date.getSeconds()}`;
+     }else onlysecondR = date.getSeconds();
 // выводим в циферблат цифровое табло
      clockDisplay.innerHTML=clockDisplay.value=`${onlyHourR}:${onlyMinR}:${onlysecondR}`;
 
      }
+
+     
+
+    
  } 
+   
+
+
+// center ciferblata
 function getElementPos(elem) {
     const bbox=elem.getBoundingClientRect();
     return {
@@ -142,4 +143,20 @@ function getElementPos(elem) {
         top: bbox.top+window.pageYOffset+userWidht/2
     };
 }
-   
+
+
+
+//position hand in the centr ciferblat
+
+// function handPosition (hand){
+//     hand.style.position = "absolute";
+//     if(hand==handHour){hand.style.height = (userWidht / 100 * 25)+'px';}
+//     else if  (hand==handSecond) {hand.style.height = (userWidht / 100 * 37)+'px';}
+//     else hand.style.height = (userWidht / 100 * 33)+'px';
+    
+// }
+
+
+
+
+
