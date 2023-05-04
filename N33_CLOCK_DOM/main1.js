@@ -103,7 +103,7 @@ function proverkaVvodaNumber() {
     }
   }
 
-  // немножко математики перевод секунд в часы, мин, секунды
+  // стрелки позиция
   function secondInHour(sec) {
     const date = new Date();
 
