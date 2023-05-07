@@ -19,7 +19,7 @@ function btnActive(eo) {
   clockSVG();
   firstWindow.style.display = "none";
   clockWrap.style.display = "block";
-}else {widhtUser.value= prompt("Please enter the width of the clock, in the range from 200 to 2000")
+}else {widhtUser.value= prompt("Please enter the width of the clock, in the range from 100 to 1999")
 btnActive(eo)
 } 
 
