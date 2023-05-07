@@ -9,19 +9,41 @@ const clockWrap = document.createElement('div');
 const clockDisplay = document.createElement('div');
 
 
-function btnActive() {
+function btnActive(eo) {
+  eo=eo||window.event;
+  eo.preventDefault();
+  if(widhtUser.value){
   userWidht = widhtUser.value;
   const clockWrap = document.createElement('div');
   const firstWindow = document.querySelector(".firstWindow");
   clockSVG();
   firstWindow.style.display = "none";
   clockWrap.style.display = "block";
+}else {widhtUser.value= prompt("please enter width clock");
+btnActive(eo);
+} 
+
 }
 
 
 
 
 function clockSVG() {
+
+
+
+
+
+function ms() {
+  const date = new Date();
+  const ms = date.getMilliseconds();
+  return ms / 1000;
+}
+
+
+
+
+setInterval(() => { handPos() }, 1010 - ms())
 
   const clockWrap = document.createElement('div');
   const clockWrapWidth = clockWrap.style.width = userWidht + 'px'; //Устанавливаем размер обертки
@@ -134,9 +156,9 @@ function handPos() {
   const mm = date.getMinutes() * deg;
   const ss = date.getSeconds() * deg;
 
-  handHour.style.transformOrigin = "center";
-  handMin.style.transformOrigin = "center";
-  handSec.style.transformOrigin = "center";
+  handHour.style.WebkitTransformOrigin = "center";
+  handMin.style.WebkitTransformOrigin = "center";
+  handSec.style.WebkitTransformOrigin = "center";
 
   handHour.style.transform = `rotateZ(${hh + mm / 12}deg)`;
   handMin.style.transform = `rotateZ(${mm}deg)`;
@@ -164,21 +186,7 @@ function handPos() {
 
   console.log(clockDisplay.value);
   clockWrap.append(clockDisplay);
-
 }
 
-
-
-
-function ms() {
-  const date = new Date();
-  const ms = date.getMilliseconds();
-  return ms / 1000;
-}
-
-
-
-
-setInterval(() => { handPos() }, 1010 - ms())
 
 
