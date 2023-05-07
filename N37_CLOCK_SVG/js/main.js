@@ -8,19 +8,19 @@ btn.addEventListener('mousedown', btnActive);
 const clockWrap = document.createElement('div');
 const clockDisplay = document.createElement('div');
 
-
 function btnActive(eo) {
-  eo=eo||window.event;
+  console.log(widhtUser.value);
+  eo=eo||window.event
   eo.preventDefault();
-  if(widhtUser.value){
+  if(100<widhtUser.value&&widhtUser.value<2000){
   userWidht = widhtUser.value;
   const clockWrap = document.createElement('div');
   const firstWindow = document.querySelector(".firstWindow");
   clockSVG();
   firstWindow.style.display = "none";
   clockWrap.style.display = "block";
-}else {widhtUser.value= prompt("please enter width clock");
-btnActive(eo);
+}else {widhtUser.value= prompt("please enter width clock")
+btnActive(eo)
 } 
 
 }
