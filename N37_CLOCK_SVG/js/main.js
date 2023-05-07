@@ -12,7 +12,7 @@ function btnActive(eo) {
   console.log(widhtUser.value);
   eo=eo||window.event
   eo.preventDefault();
-  if(100<widhtUser.value&&widhtUser.value<2000){
+  if(100<=widhtUser.value&&widhtUser.value<2000){
   userWidht = widhtUser.value;
   const clockWrap = document.createElement('div');
   const firstWindow = document.querySelector(".firstWindow");
