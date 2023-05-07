@@ -9,7 +9,7 @@ const clockWrap = document.createElement('div');
 const clockDisplay = document.createElement('div');
 
 function btnActive(eo) {
-  console.log(widhtUser.value);
+  
   eo=eo||window.event
   eo.preventDefault();
   if(100<=widhtUser.value&&widhtUser.value<2000){
