@@ -19,20 +19,14 @@ function btnActive(eo) {
   clockSVG();
   firstWindow.style.display = "none";
   clockWrap.style.display = "block";
-}else {widhtUser.value= prompt("please enter width clock")
+}else {widhtUser.value= prompt("Please enter the width of the clock, in the range from 200 to 2000")
 btnActive(eo)
 } 
 
 }
 
 
-
-
 function clockSVG() {
-
-
-
-
 
 function ms() {
   const date = new Date();
