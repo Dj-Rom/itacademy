@@ -195,24 +195,11 @@ function handPos() {
     return msWorld;
   }
   ////////////////////////////////////////////////////////////////////////
-  function timeCorect() {
-    const date = new Date();
 
-    if (Math.trunc(ms() * 1000) == date.getMilliseconds()) {
-      console.log(date.getMilliseconds());
-      console.log("Ok");
-      console.log(Math.trunc(ms() * 1000));
+   
+      setTimeout(handPos, 1010 - (ms() * 1000));
 
-      setTimeout(handPos, 1010);
-    } else {
-      setTimeout(handPos, 1010 - ms() * 1000);
-      console.log(date.getMilliseconds());
-      console.log("corection");
-      console.log(Math.trunc(ms() * 1000));
-    }
-  }
 
-  timeCorect();
   // //////////////////////////////////////////////////
   console.log(clockDisplay.value);
   clockWrap.append(clockDisplay);
