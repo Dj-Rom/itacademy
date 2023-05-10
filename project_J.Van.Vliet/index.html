@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcom driver</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="contener">
+        <h2>Karta drogowa</h2> 
+        <div class="form_karty">
+            <form action="" method="post">
+                <label for="drivers">Wybierz kierowce</label><select name="drivers" id="drivers">
+                    <option value="Aleh&Aliaksanr">Aleh i Aliaksandr</option>
+                    <option value="Tomek&Rober">Tomek i Rober</option>
+                </select><br>
+                <label for="auto">Wybierz auto</label><select name="auto" id="auto"><br>
+                    <option value="PZ1H734">PZ1H734</option>
+                    <option value="PZ1H365">PZ1H365</option>
+                    <option value="PZ1H364">PZ1H364</option>
+                    <option value="PZ1H363">PZ1H363</option>
+                    <option value="PZ1R743">PZ1R743</option>
+                    <option value="PZ1R742">PZ1R742</option>
+                    <option value="PZ1R741">PZ1R741</option>
+                </select><br>
+                <label for="naczepa">Wybierz auto</label><select name="naczepa" id="naczepa">
+                    <option value="PO7YW30">PO7YW30</option>
+                    <option value="PO7YW31">PO7YW31</option>
+                    <option value="PO7YW32">PO7YW32</option>
+                    <option value="PO7YW33">PO7YW33</option>
+                </select><br>
+                    <label for="data_start">Wyberz datu wyjazdu</label>
+                        <input type="date" name="data_start" id="data_start"><br>
+                    <label for="time_start">Wyberz chas wyjazdu</label>
+                        <input type="time" name="time_start" id="time_start"><br>
+                    <label for="km_start">Wpisz stan licznika</label>
+                        <input type="number" name="km_start" id="km_start"><br>
+                    <label for="paliwo_plac">Miejsco tankowania paliwa</label>
+                    <select name="paliwo_plac_start" id="paliwo_plac_start">
+                        <option value="baza">Baza</option>
+                        <option value="stancia_paliw">Stancija paliw</option></select><br>
+                    <label for="ile_paliwa_start">Ile zatankowal</label>
+                        <input type="number" name="ile_paliwa_start" id="ile_paliwa_start"><br>
+                    <br>
+                
+                        <h2>Powrot do bazy</h2>
+                        <label for="data_end">Wyberz datu pszyjazdu</label>
+                        <input type="date" name="data_end" id="data_end"><br>
+                    <label for="time_start">Wyberz chas pszyjazdu</label>
+                        <input type="time" name="time_end" id="time_end"><br>
+                    <label for="km_start">Wpisz stan licznika</label>
+                        <input type="number" name="km_end" id="km_end"><br>
+                    <label for="paliwo_plac">Miejsco tankowania paliwa</label>
+                    <select name="paliwo_plac_end" id="paliwo_plac_end">
+                        <option value="baza">Baza</option>
+                        <option value="stancia_paliw">Stancija paliw</option></select><br>
+                    <label for="ile_paliwa_end">Ile zatankowal</label>
+                        <input type="number" name="ile_paliwa_end" id="ile_paliwa_end"><br>
+                    <input type="button" value="Pszeliczic" id="btn1" style="width: 400px; border-radius: 6px; margin-top: 20px; background-color: aquamarine;">
+                </form>
+                <div class="result" id="result"></div>
+        </div>
+       </div>
+    <script src="./js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+*{
+    box-sizing: border-box;
+}
+.contener{
+    max-width: 400px;
+}
+form{
+    
+    position: relative;
+    display: block;
+}
+
+#drivers,#auto,#naczepa,#data_start,#time_start,#km_start,#paliwo_plac_start,#ile_paliwa_start,#data_end,#time_end,#km_end,#paliwo_plac_end,#ile_paliwa_end{
+    
+    position: absolute;
+    right: 0px;
+    width:200px;
+    padding-top: -4px;;
+}
+.result{
+    margin-top: 20px;
+    position: absolute;
+    display: block;
+    height: 150px;
+    width: 400px;
+    outline:auto;
+    
+}
