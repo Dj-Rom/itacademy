@@ -9,8 +9,8 @@ function dragDrop () {
 
     let shiftX,
         shiftY,
-        zIndexNewValue = 1,
-        dragImg = null;
+        dragImg = null,
+         zIndexNewValue = 1; // z index start value 
     // We iterate over all images
     const allImgInDocument = document.querySelectorAll('img');
 
@@ -32,7 +32,7 @@ function dragDrop () {
       
         console.log('down');
         dragImg = eo.target;
-        dragImg.style.zIndex = `${++zIndexNewValue}`;
+        dragImg.style.zIndex = `${zIndexNewValue++}`;
         shiftX = eo.pageX - dragImg.offsetLeft;
         shiftY = eo.pageY -dragImg.offsetTop;
         
