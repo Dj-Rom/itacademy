@@ -98,7 +98,7 @@ function clockSVG() {
     "http://www.w3.org/2000/svg",
     "line"
   );
-  handHour.setAttribute("stroke", "black");
+  handHour.setAttribute("stroke", "#33091b");
   handHour.setAttribute("stroke-width", CLOCK_RADIUS / 35);
   handHour.setAttribute("x1", CLOCK_CENTER_X);
   handHour.setAttribute("y1", CLOCK_CENTER_Y * 1.1);
@@ -111,7 +111,7 @@ function clockSVG() {
     "http://www.w3.org/2000/svg",
     "line"
   );
-  handMin.setAttribute("stroke", "black");
+  handMin.setAttribute("stroke", "#33091b");
   handMin.setAttribute("stroke-width", CLOCK_RADIUS / 50);
   handMin.setAttribute("x1", CLOCK_CENTER_X);
   handMin.setAttribute("y1", CLOCK_CENTER_Y * 1.1);
