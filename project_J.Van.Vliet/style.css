@@ -9,7 +9,9 @@ form{
     position: relative;
     display: block;
 }
-
+label{
+    font-size: calc(.8rem + 0.2vw);
+}
 #drivers,#auto,#naczepa,#data_start,#time_start,#km_start,#paliwo_plac_start,#ile_paliwa_start,#data_end,#time_end,#km_end,#paliwo_plac_end,#ile_paliwa_end{
     
     position: absolute;
