@@ -5,8 +5,6 @@ let userWidht;
 const btn = document.getElementById("btn");
 
 btn.addEventListener("mousedown", btnActive);
-const clockWrap = document.createElement("div");
-const clockDisplay = document.createElement("div");
 
 function btnActive(eo) {
   eo = eo || window.event;
@@ -26,10 +24,13 @@ function btnActive(eo) {
 
 function clockSVG() {
   const clockWrap = document.createElement("div");
-  const clockWrapWidth = (clockWrap.style.width = userWidht + "px"); //Устанавливаем размер обертки
-  const clockWrapHeight = (clockWrap.style.height = userWidht + "px"); //Устанавливаем размер обертки
+  const clockWrapWidth = (clockWrap.style.width = userWidht + "px"); 
+  const clockWrapHeight = (clockWrap.style.height = userWidht + "px"); 
   clockWrap.className = "clock";
   document.body.appendChild(clockWrap);
+  const clockDisplay = document.createElement("div");
+  clockDisplay.id = "clockDisplay";
+  clockWrap.append(clockDisplay);
   // elem SVG
   const svgElem = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svgElem.setAttribute("width", clockWrapWidth);
@@ -53,7 +54,7 @@ function clockSVG() {
   clockCircle.setAttribute("cy", CLOCK_CENTER_Y);
   clockCircle.setAttribute("r", CLOCK_RADIUS);
   clock.appendChild(clockCircle);
-  // Создаем цифры на часах
+  // Сreate 12 number
   for (let i = 1; i <= 12; i++) {
     // create group
     const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
@@ -175,35 +176,23 @@ function handPos() {
   if (date.getSeconds() < 10) {
     onlysecondR = `0${date.getSeconds()}`;
   } else onlysecondR = date.getSeconds();
-  // выводим в циферблат цифровое табло
-  const clockWrap = document.querySelector(".clock");
-  clockDisplay.className = "clockDisplay";
+  // Digital clock on the dial
+  const clockWrap = document.querySelector("#clockDisplay");
 
-  clockDisplay.style = ` left: ${
+  clockWrap.style = ` left: ${
     (userWidht / 100) * 40
   }px; position: absolute;z-index:222; font-size: ${userWidht / 15}px;  top: ${
     (userWidht / 100) * 30
   }px; `;
-  clockDisplay.innerHTML =
-    clockDisplay.value = `${onlyHourR}:${onlyMinR}:${onlysecondR}`;
-
-  const msWorld = date.getTime() / 1000 - Math.trunc(date.getTime() / 1000);
+  // ////////////
+  clockWrap.innerHTML = `${onlyHourR}:${onlyMinR}:${onlysecondR}`;
+  console.log(clockWrap.innerHTML);
+  // ///////////
 
   function ms() {
     const date = new Date();
-    const msWorld = date.getTime() / 1000 - Math.trunc(date.getTime() / 1000);
+    const msWorld = date.getTime() % 1000;
     return msWorld;
   }
-  ////////////////////////////////////////////////////////////////////////
-
-   
-      setTimeout(handPos, 1010 - (ms() * 1000));
-
-
-  // //////////////////////////////////////////////////
-  console.log(clockDisplay.value);
-  clockWrap.append(clockDisplay);
+  setTimeout(handPos, 1010 - ms());
 }
-
-
-
