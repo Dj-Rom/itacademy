@@ -157,9 +157,9 @@ function handPos() {
   const mm = date.getMinutes() * deg;
   const ss = date.getSeconds() * deg;
 
-  handHour.style.WebkitTransformOrigin = "center";
-  handMin.style.WebkitTransformOrigin = "center";
-  handSec.style.WebkitTransformOrigin = "center";
+  handHour.style.transformOrigin = "center";
+  handMin.style.transformOrigin = "center";
+  handSec.style.transformOrigin = "center";
 
   handHour.style.transform = `rotateZ(${hh + mm / 12}deg)`;
   handMin.style.transform = `rotateZ(${mm}deg)`;
