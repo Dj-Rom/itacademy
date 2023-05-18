@@ -218,7 +218,7 @@ btnS.addEventListener('click', start)
 
 function start() {
     const arrRandonX = [2, 3, -4, -2, -3, 4]
-    const arrRandonY = [1, 2, 3, -1, -2, -3]
+    const arrRandonY = [1, 2, 1.5, -1, -2, -1.5]
     ball.speedX = arrRandonX[Math.floor(Math.random() * 6)];
     ball.speedY = arrRandonY[Math.floor(Math.random() * 6)]
     ball.Y = 400;
