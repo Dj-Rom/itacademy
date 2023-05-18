@@ -53,14 +53,14 @@ contener.append(chet);
 document.body.append(contener);
 //
 btn.addEventListener("mousedown", startS);
+
 function startS() {
     const arrayRandom = [8, -4, -3, 4, 5, -5];
-    ballH.posX = 350;
-    ballH.posY = 150;
+    ballH.posX = 600;
+    ballH.posY = 200;
     ballH.speedX = arrayRandom[Math.floor(Math.random() * 6)];
     ballH.speedY = arrayRandom[Math.floor(Math.random() * 6)];
     ballH.update();
-    tick();
 }
 let racketRight = {
     posX: 0,
@@ -93,8 +93,8 @@ let racketLeft = {
 };
 racketLeft.updateracketLeft();
 let ballH = {
-    posX: 550,
-    posY: 150,
+    posX: 600,
+    posY: 200,
     speedX: 0,
     speedY: 0,
     width: 50,
@@ -118,10 +118,12 @@ let areaH = {
         field.style.height = this.height + "px";
     },
 };
+let addevent = false;
 areaH.updateArea();
+
 function tick() {
-    btn.removeEventListener("mousedown", startS);
-    let start = requestAnimationFrame(tick);
+    btn.addEventListener('mouseup',()=>{ btn.removeEventListener("mousedown", startS);})
+   requestAnimationFrame(tick);
 
     ballH.posX += ballH.speedX;
 
@@ -136,13 +138,21 @@ function tick() {
         }
     }
     if (ballH.posX >= areaH.width - ballH.width) {
-        btn.addEventListener("mousedown", startS);
-        (leftUser += 1),
-            (chet.innerHTML = `${leftUser}:${rightUser}`),
-            (ballH.speedX = 0),
-            (ballH.speedY = 0),
-            cancelAnimationFrame(start);
+        leftUser += 1,
+        
+            chet.innerHTML = `${leftUser}:${rightUser}`
+            ballH.speedX = 0
+            ballH.speedY = 0
+            ballH.posX = areaH.width - ballH.width-0.1
+          
     } 
+    if(ballH.posX == areaH.width - ballH.width-0.1||ballH.posX == 0.1){
+        addevent = true
+    }else { addevent = false}
+    if(addevent){
+        btn.addEventListener("mousedown", startS);
+    }
+    // вылетел ли мяч левее стены?
     if (
         racketLeftN.offsetTop - 45 <= ballH.posY &&
         ballH.posY <= racketLeftN.offsetTop + racketLeftN.offsetHeight
@@ -150,19 +160,19 @@ function tick() {
         if (ballH.posX < racketLeft.width) {
             ballH.speedX = -ballH.speedX;
             ballH.posX = racketLeft.width;
-            ballH.update();
-        }
+            ballH.update();}
     }
     if (ballH.posX <= racketLeft.width - racketLeft.width) {
-        btn.addEventListener("mousedown", startS);
-
-        (rightUser += 1),
-            (chet.innerHTML = `${leftUser}:${rightUser}`),
-            (ballH.speedX = 0),
-            (ballH.speedY = 0),
-            cancelAnimationFrame(start);
+       
+        ballH.posX = 0.1
+        rightUser += 1,
+            chet.innerHTML = `${leftUser}:${rightUser}`
+            ballH.speedX = 0
+            ballH.speedY = 0
+            
+            
     }
-
+    console.log(addevent);
     ballH.update();
 
     ballH.posY += ballH.speedY;
@@ -179,7 +189,7 @@ function tick() {
 
     ballH.update();
 
-
+    //   wyhod za pole
 
     racketLeft.posY += racketLeft.speedY;
     racketRight.posY += racketRight.speedY;
@@ -216,6 +226,7 @@ function tick() {
         if (event.key === "ArrowDown") {
             racketRight.speedY = 0;
         }
+
         if (event.key === "Shift") {
             racketLeft.speedY = 0;
         }
@@ -223,6 +234,7 @@ function tick() {
             racketLeft.speedY = 0;
         }
     }
+
     if (racketRight.posY < 1) {
         racketRight.posY = 4;
     } else if (racketRight.posY >= areaH.height - racketRight.height) {
@@ -234,4 +246,5 @@ function tick() {
     } else if (racketLeft.posY >= areaH.height - racketLeft.height) {
         racketLeft.posY = areaH.height - (racketLeft.height + 4);
     }
-}
+   
+}tick();
