@@ -137,7 +137,7 @@ field = {
 field.update();
 
 ball = {
-    r: 30,
+    r: 20,
     fill: "red",
     CX: 600,
     X: 30,
