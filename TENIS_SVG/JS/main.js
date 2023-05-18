@@ -137,7 +137,7 @@ field = {
 field.update();
 
 ball = {
-    r: 20,
+    r: 15,
     fill: "red",
     CX: 600,
     X: 30,
@@ -296,14 +296,14 @@ if (ball.CX <= ball.r) {
 
    
 function ballFunc(){
-if (racketRight.y+field.y  < ball.Y+ball.r && ball.Y-ball.r < racketRight.y +field.y+ racketRight.height) {
+if (racketRight.y+field.y  =< ball.Y+ball.r && ball.Y-ball.r <= racketRight.y +field.y+ racketRight.height) {
     if (ball.CX + ball.r > field.width - racketRight.width) {
         ball.speedX = -ball.speedX;
         ball.X = field.width  - racketRight.width;
         }
     }
  // вылетел ли мяч левее стены?
-if (racketLeft.y < ball.Y - field.y+ball.r &&  ball.Y - field.y - ball.r < racketLeft.y + racketLeft.height) {
+if (racketLeft.y =< ball.Y - field.y+ball.r &&  ball.Y - field.y - ball.r <= racketLeft.y + racketLeft.height) {
     if (ball.CX - ball.r < racketLeft.width) {
         ball.speedX = -ball.speedX;
         ball.X =  racketLeft.width - racketRight.width;
