@@ -119,16 +119,14 @@ function startS() {
     ballH.speedX = arrayRandom[Math.floor(Math.random() * 6)];
     ballH.speedY = arrayRandom[Math.floor(Math.random() * 6)];
     ballH.update();
-    console.log("hh");
+  
 }
-
 
 let addevent = false;
 areaH.updateArea();
 
 function tick() {
-    
-    requestAnimationFrame(tick)
+    requestAnimationFrame(tick);
 
     ballH.posX += ballH.speedX;
 
@@ -143,18 +141,17 @@ function tick() {
         }
     }
     if (ballH.posX >= areaH.width - ballH.width) {
-        leftUser += 1,
-        
-            chet.innerHTML = `${leftUser}:${rightUser}`
-            ballH.speedX = 0
-            ballH.speedY = 0
-            ballH.posX = areaH.width - ballH.width-0.1
-          
-    } 
-    if(ballH.posX == areaH.width - ballH.width-0.1||ballH.posX == 0.1){
-        addevent = true
-    }else { addevent = false}
-    if(addevent){
+        (leftUser += 1), (chet.innerHTML = `${leftUser}:${rightUser}`);
+        ballH.speedX = 0;
+        ballH.speedY = 0;
+        ballH.posX = areaH.width - ballH.width - 0.1;
+    }
+    if (ballH.posX == areaH.width - ballH.width - 0.1 || ballH.posX == 0.1) {
+        addevent = true;
+    } else {
+        addevent = false;
+    }
+    if (addevent) {
         btn.addEventListener("mousedown", startS);
     }
     // вылетел ли мяч левее стены?
@@ -165,20 +162,14 @@ function tick() {
         if (ballH.posX < racketLeft.width) {
             ballH.speedX = -ballH.speedX;
             ballH.posX = racketLeft.width;
-            ballH.update();}
+        }
     }
     if (ballH.posX <= racketLeft.width - racketLeft.width) {
-       
-        ballH.posX = 0.1
-        rightUser += 1,
-            chet.innerHTML = `${leftUser}:${rightUser}`
-            ballH.speedX = 0
-            ballH.speedY = 0
-            
-            
+        ballH.posX = 0.1;
+        (rightUser += 1), (chet.innerHTML = `${leftUser}:${rightUser}`);
+        ballH.speedX = 0;
+        ballH.speedY = 0;
     }
-
-    ballH.update();
 
     ballH.posY += ballH.speedY;
     // вылетел ли мяч ниже пола?
@@ -193,13 +184,11 @@ function tick() {
     }
 
     ballH.update();
-
-    //   wyhod za pole
-
     racketLeft.posY += racketLeft.speedY;
     racketRight.posY += racketRight.speedY;
     racketLeft.updateracketLeft();
     racketRight.updateracketRight();
+
     if (racketRight.posY < 1) {
         racketRight.posY = 4;
     } else if (racketRight.posY >= areaH.height - racketRight.height) {
@@ -211,52 +200,52 @@ function tick() {
     } else if (racketLeft.posY >= areaH.height - racketLeft.height) {
         racketLeft.posY = areaH.height - (racketLeft.height + 4);
     }
-    
-}tick();
-btn.addEventListener('mouseup',()=>{ btn.removeEventListener("mousedown", startS)})
-    document.addEventListener("keydown", keyD);
-   
-    function keyD() {
-        document.removeEventListener("keyup", keyup);
-        event.preventDefault();
-        
-        if (event.key === "ArrowUp") {
-            racketRight.speedY = -10;
-        }
-        if (event.key === "ArrowDown") {
-            racketRight.speedY = 10;
-        }
-
-        if (event.key === "Shift") {
-            racketLeft.speedY = -10;
-        }
-
-        if (event.key === "Control") {
-            racketLeft.speedY = 10;
-        }
-        document.addEventListener("keyup", keyup);
-    }   
-    
-    document.addEventListener("keyup", keyup);
-    function keyup() {
-        document.removeEventListener("keydown", keyD)
-        event.preventDefault();
-        if (event.key === "ArrowUp") {
-            racketRight.speedY = 0;
-        }
-        if (event.key === "ArrowDown") {
-            racketRight.speedY = 0;
-        }
-
-        if (event.key === "Shift") {
-            racketLeft.speedY = 0;
-        }
-        if (event.key === "Control") {
-            racketLeft.speedY = 0;
-        }
-
-       
-        document.addEventListener("keydown", keyD);
-
 }
-   
+tick();
+btn.addEventListener("mouseup", () => {
+    btn.removeEventListener("mousedown", startS);
+});
+document.addEventListener("keydown", keyD);
+
+function keyD() {
+    document.removeEventListener("keyup", keyup);
+    event.preventDefault();
+
+    if (event.key === "ArrowUp") {
+        racketRight.speedY = -10;
+    }
+    if (event.key === "ArrowDown") {
+        racketRight.speedY = 10;
+    }
+
+    if (event.key === "Shift") {
+        racketLeft.speedY = -10;
+    }
+
+    if (event.key === "Control") {
+        racketLeft.speedY = 10;
+    }
+    document.addEventListener("keyup", keyup);
+}
+
+document.addEventListener("keyup", keyup);
+function keyup() {
+    document.removeEventListener("keydown", keyD);
+    event.preventDefault();
+    if (event.key === "ArrowUp") {
+        racketRight.speedY = 0;
+    }
+    if (event.key === "ArrowDown") {
+        racketRight.speedY = 0;
+    }
+
+    if (event.key === "Shift") {
+        racketLeft.speedY = 0;
+    }
+    if (event.key === "Control") {
+        racketLeft.speedY = 0;
+    }
+
+    document.addEventListener("keydown", keyD);
+}
+
