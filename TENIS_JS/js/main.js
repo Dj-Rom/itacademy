@@ -52,16 +52,7 @@ contener.append(btn);
 contener.append(chet);
 document.body.append(contener);
 //
-btn.addEventListener("mousedown", startS);
 
-function startS() {
-    const arrayRandom = [8, -4, -3, 4, 5, -5];
-    ballH.posX = 600;
-    ballH.posY = 200;
-    ballH.speedX = arrayRandom[Math.floor(Math.random() * 6)];
-    ballH.speedY = arrayRandom[Math.floor(Math.random() * 6)];
-    ballH.update();
-}
 let racketRight = {
     posX: 0,
     posY: 200,
@@ -118,12 +109,26 @@ let areaH = {
         field.style.height = this.height + "px";
     },
 };
+
+btn.addEventListener("mousedown", startS);
+
+function startS() {
+    const arrayRandom = [8, -4, -3, 4, 5, -5];
+    ballH.posX = 600;
+    ballH.posY = 200;
+    ballH.speedX = arrayRandom[Math.floor(Math.random() * 6)];
+    ballH.speedY = arrayRandom[Math.floor(Math.random() * 6)];
+    ballH.update();
+    console.log("hh");
+}
+
+
 let addevent = false;
 areaH.updateArea();
 
 function tick() {
-    btn.addEventListener('mouseup',()=>{ btn.removeEventListener("mousedown", startS);})
-   requestAnimationFrame(tick);
+    
+    requestAnimationFrame(tick)
 
     ballH.posX += ballH.speedX;
 
@@ -172,7 +177,7 @@ function tick() {
             
             
     }
-    console.log(addevent);
+
     ballH.update();
 
     ballH.posY += ballH.speedY;
@@ -195,11 +200,26 @@ function tick() {
     racketRight.posY += racketRight.speedY;
     racketLeft.updateracketLeft();
     racketRight.updateracketRight();
+    if (racketRight.posY < 1) {
+        racketRight.posY = 4;
+    } else if (racketRight.posY >= areaH.height - racketRight.height) {
+        racketRight.posY = areaH.height - (racketRight.height + 4);
+    }
 
+    if (racketLeft.posY < 1) {
+        racketLeft.posY = 4;
+    } else if (racketLeft.posY >= areaH.height - racketLeft.height) {
+        racketLeft.posY = areaH.height - (racketLeft.height + 4);
+    }
+    
+}tick();
+btn.addEventListener('mouseup',()=>{ btn.removeEventListener("mousedown", startS)})
     document.addEventListener("keydown", keyD);
+   
     function keyD() {
+        document.removeEventListener("keyup", keyup);
         event.preventDefault();
-
+        
         if (event.key === "ArrowUp") {
             racketRight.speedY = -10;
         }
@@ -214,11 +234,12 @@ function tick() {
         if (event.key === "Control") {
             racketLeft.speedY = 10;
         }
-        document.removeEventListener("keyup", keyup);
-    }
+        document.addEventListener("keyup", keyup);
+    }   
+    
     document.addEventListener("keyup", keyup);
     function keyup() {
-        document.removeEventListener("keydown", keyD);
+        document.removeEventListener("keydown", keyD)
         event.preventDefault();
         if (event.key === "ArrowUp") {
             racketRight.speedY = 0;
@@ -233,18 +254,9 @@ function tick() {
         if (event.key === "Control") {
             racketLeft.speedY = 0;
         }
-    }
 
-    if (racketRight.posY < 1) {
-        racketRight.posY = 4;
-    } else if (racketRight.posY >= areaH.height - racketRight.height) {
-        racketRight.posY = areaH.height - (racketRight.height + 4);
-    }
+       
+        document.addEventListener("keydown", keyD);
 
-    if (racketLeft.posY < 1) {
-        racketLeft.posY = 4;
-    } else if (racketLeft.posY >= areaH.height - racketLeft.height) {
-        racketLeft.posY = areaH.height - (racketLeft.height + 4);
-    }
+}
    
-}tick();
