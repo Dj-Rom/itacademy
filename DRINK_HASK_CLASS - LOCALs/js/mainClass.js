@@ -1,6 +1,6 @@
 window.addEventListener("load", ()=>{
-   localStorage["Drink"] = JSON.stringify({});
-   localStorage["food"] =  JSON.stringify({});
+   localStorage["Drink"] =  localStorage["Drink"]? localStorage["Drink"]: JSON.stringify({})
+   localStorage["food"] =   localStorage["food"]? localStorage["food"]: JSON.stringify({})
 
 class HashStorageClass  {
    #storage = {};
